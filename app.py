@@ -7,118 +7,107 @@ import numpy as np
 import pandas as pd
 
 # ==========================================
-# PAGE CONFIGURATION & ULTRA-MODERN CSS
+# PAGE CONFIGURATION & HIGH-CONTRAST SAAS CSS
 # ==========================================
 st.set_page_config(
-    page_title="Khel-Verify AI | National DPI Sports Integrity Command",
+    page_title="Khel-Verify AI | National Sports Integrity Platform",
     page_icon="🛡️",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
 
-    /* Global Theme & Font */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    [data-testid="collapsedControl"] {display: none;}
+
     html, body, [class*="css"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        color: #f8fafc;
-        background-color: #030712;
+        color: #0f172a;
+        background-color: #f8fafc;
     }
 
-    /* Main Header Banner */
-    .hero-banner {
-        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
-        border: 1px solid rgba(99, 102, 241, 0.3);
-        padding: 2rem;
+    /* Elite Navbar */
+    .saas-navbar {
+        background: linear-gradient(90deg, #0f172a 0%, #1e3a8a 100%);
+        border: 1px solid rgba(30, 58, 138, 0.2);
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+        margin-bottom: 1.5rem;
+    }
+    .brand-title {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #ffffff !important;
+        letter-spacing: -0.02em;
+    }
+
+    /* Ultra-Bright Hero Box (High Contrast & Clear) */
+    .hero-box {
+        background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+        border: 1px solid rgba(59, 130, 246, 0.4);
+        padding: 2.5rem;
         border-radius: 16px;
         margin-bottom: 1.5rem;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
-        position: relative;
-        overflow: hidden;
+        box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.25);
     }
-    .hero-banner::after {
-        content: "";
-        position: absolute;
-        top: 0; right: 0; width: 300px; height: 100%;
-        background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
-        pointer-events: none;
-    }
-    .hero-title {
+    .hero-h1 {
         font-size: 2.2rem;
         font-weight: 800;
-        color: #ffffff;
+        color: #ffffff !important;
+        opacity: 1 !important;
         margin: 0;
-        letter-spacing: -0.025em;
-        background: linear-gradient(to right, #ffffff, #93c5fd);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.03em;
     }
-    .hero-subtitle {
-        font-size: 1rem;
-        color: #94a3b8;
-        margin-top: 0.5rem;
+    .hero-p {
+        font-size: 1.1rem;
+        color: #ffffff !important;
+        opacity: 0.95 !important;
+        margin-top: 0.75rem;
+        max-width: 950px;
+        line-height: 1.5;
         font-weight: 500;
     }
 
-    /* Glassmorphism Cards */
-    .glass-card {
-        background: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 1.5rem;
+    /* Clean Enterprise Cards */
+    .clean-card {
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
         border-radius: 14px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
         margin-bottom: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
 
-    /* USSD Terminal Screen */
-    .ussd-terminal {
-        background-color: #020617;
-        color: #34d399;
+    /* Terminal Console */
+    .ussd-console {
+        background-color: #030712;
+        color: #38bdf8;
         font-family: 'JetBrains Mono', monospace;
         padding: 1.5rem;
-        border-radius: 12px;
-        border: 2px solid #059669;
-        box-shadow: inset 0 0 20px rgba(5, 150, 105, 0.15);
-        min-height: 260px;
+        border-radius: 10px;
+        border: 2px solid #0284c7;
+        min-height: 250px;
         font-size: 0.95rem;
         line-height: 1.6;
     }
 
-    /* Status Banners */
-    .duress-alert-box {
-        background: rgba(127, 29, 29, 0.4);
-        border: 1px solid #ef4444;
-        color: #fca5a5;
-        padding: 1.25rem;
-        border-radius: 12px;
-        font-weight: 600;
-        backdrop-filter: blur(8px);
-    }
-    .safe-status-box {
-        background: rgba(6, 78, 59, 0.4);
-        border: 1px solid #10b981;
-        color: #6ee7b7;
-        padding: 1.25rem;
-        border-radius: 12px;
-        font-weight: 600;
-        backdrop-filter: blur(8px);
-    }
-
-    /* Custom Badges */
     .badge-pill {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        font-size: 0.75rem;
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        padding: 5px 14px;
+        border-radius: 20px;
+        font-size: 0.8rem;
         font-weight: 700;
-        border-radius: 9999px;
-        background-color: rgba(79, 70, 229, 0.2);
-        color: #818cf8;
-        border: 1px solid rgba(99, 102, 241, 0.4);
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -127,15 +116,15 @@ st.markdown("""
 # STATE INITIALIZATION
 # ==========================================
 if "hash_chain" not in st.session_state:
-    genesis_payload = "GENESIS_BLOCK|KHEL_VERIFY_DPI_V2.0|2026-10-21"
+    genesis_payload = "GENESIS_BLOCK|KHEL_VERIFY_DPI_ENTERPRISE|2026-10-21"
     genesis_hash = hashlib.sha256(genesis_payload.encode()).hexdigest()
     st.session_state.hash_chain = [{
         "Block": 0,
         "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "Match_ID": "SYS-INIT",
-        "Event": "DPI_SECURE_GATEWAY_ONLINE",
+        "Event": "DPI_GATEWAY_ONLINE",
         "Score_State": "0-0",
-        "Prev_Hash": "0" * 16 + "...",
+        "Prev_Hash": "0" * 12 + "...",
         "Curr_Hash": genesis_hash[:24] + "...",
         "Status": "IMMUTABLE"
     }]
@@ -161,7 +150,6 @@ APAAR_REGISTRY = {
         "age_years": 17.4,
         "school": "Govt Higher Secondary School, Saidapet, Chennai",
         "board_cert_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "biometric_update_age": 16,
         "registered_sim": "+91-94440-XXXXX",
         "true_pin": 12,
         "duress_pin": 45,
@@ -174,7 +162,6 @@ APAAR_REGISTRY = {
         "age_years": 15.9,
         "school": "Panchayat Union Middle School, Madurai",
         "board_cert_hash": "8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4",
-        "biometric_update_age": 15,
         "registered_sim": "+91-98401-XXXXX",
         "true_pin": 21,
         "duress_pin": 88,
@@ -187,7 +174,6 @@ APAAR_REGISTRY = {
         "age_years": 21.6,
         "school": "Private Sports Academy",
         "board_cert_hash": "2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae",
-        "biometric_update_age": 17,
         "registered_sim": "+91-90030-XXXXX",
         "true_pin": 15,
         "duress_pin": 99,
@@ -213,91 +199,56 @@ def add_block(match_id, event_name, score_state, status="VERIFIED"):
         "Status": status
     })
 
-# ==========================================
-# HEADER & SIDEBAR
-# ==========================================
+# NAVBAR & HERO (Updated Title & Clean Bright Look)
 st.markdown("""
-<div class="hero-banner">
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div>
-            <h1 class="hero-title">🛡️ Khel-Verify AI</h1>
-            <p class="hero-subtitle">Zero-Hardware DPI Backend Architecture & Cryptographic Anti-Coercion Protocol</p>
-        </div>
-        <div>
-            <span class="badge-pill">Ministry of Education</span>
-            <span class="badge-pill">Viksit Bharat 2047</span>
-            <span class="badge-pill">IISc Finalist Track</span>
-        </div>
+<div class="saas-navbar">
+    <div class="brand-title">KHEL-VERIFY AI - NATIONAL INTEGRITY GRID</div>
+    <div style="display:flex; gap:10px;">
+        <span class="badge-pill">Ministry of Education</span>
+        <span class="badge-pill">Viksit Bharat 2047</span>
     </div>
+</div>
+
+<div class="hero-box">
+    <h1 class="hero-h1">Khel-Verify AI: Zero-Hardware Backend Architecture with Automated Anti-Coercion Protocol for Sports Fraud Prevention</h1>
+    <p class="hero-p">
+        Eliminating grassroots sports certificate fraud, identity manipulation, and on-field physical coercion through centralized DPI server logic and cryptographic USSD duress protocols.
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
-with st.sidebar:
-    st.markdown("### 🛡️ Khel-Verify AI Command")
-    st.caption("National DPI Sports Integrity Architecture")
-    
-    st.divider()
-    
-    st.markdown("### 🧠 Solution & Backend Core")
-    st.markdown("""
-    - **Zero-Hardware Backend:** Bypasses ₹15k+ biometric scanners using existing cloud & telecom infrastructure.
-    - **DPI Data Pipeline:** Integrates 12-digit APAAR ID & DigiLocker APIs for tamper-proof birth records.
-    - **Edge-AI Face Recognition:** MobileNetV2 128-D vector matching prevents proxy/over-age players.
-    - **SHA-256 Hash Chain:** Cryptographic vault freezes match scores against local ground tampering.
-    """)
-    
-    st.divider()
-    
-    st.markdown("### ⚙️ What We Did in Each Layer")
-    st.markdown("""
-    - **🪪 Layer 1 (Identity Gate):** 
-      * *What we did:* We fetched official student records using the 12-digit APAAR ID and DigiLocker XML API.
-      * *Why:* Stops over-age/proxy players before they enter the ground using offline-first Edge AI face matching.
-    - **📟 Layer 2 (USSD Vault):** 
-      * *What we did:* Built a 2G feature phone USSD/SMS handshake engine with an immutable SHA-256 audit ledger.
-      * *Why:* Ensures zero-internet reliability in remote villages and locks score states against local manipulation.
-    - **🕵️ Layer 3 (Silent Trap):** 
-      * *What we did:* Designed a Dual-PIN cryptographic algebra where entering a Duress PIN triggers a decoy phone screen.
-      * *Why:* Protects young athletes physically from corrupt officials while silently freezing the bracket and alerting state vigilance!
-    """)
-    
-    st.divider()
-    
-    st.markdown("### 📊 Live Impact Metrics")
-    st.metric("Hardware Footprint", "₹0 / Ground", delta="-₹15,000 vs Biometric Terminals")
+col_m1, col_m2, col_m3, col_m4 = st.columns(4)
+with col_m1:
+    st.metric("Hardware Footprint", "₹0 / Ground", delta="-₹15,000 vs Biometric")
+with col_m2:
     st.metric("Per-Match Cost", "₹2.40", delta="USSD Cloud Gateway")
-    
-    status_label = "🚨 BRACKET FROZEN (DURESS)" if st.session_state.bracket_frozen else "🟢 SECURE & LIVE"
-    st.markdown(f"**System Status:**<br>`{status_label}`", unsafe_allow_html=True)
-    
-    st.divider()
-    if st.button("🔄 Reset System State", use_container_width=True):
-        st.session_state.bracket_frozen = False
-        st.session_state.vigilance_alerts = []
-        st.rerun()
+with col_m3:
+    st.metric("Identity Verification", "APAAR + DigiLocker", delta="100% Tamper-Proof")
+with col_m4:
+    status_str = "FROZEN (DURESS)" if st.session_state.bracket_frozen else "SECURE & LIVE"
+    st.metric("System Integrity Status", status_str, delta="SHA-256 Chain Active")
 
-# ==========================================
-# TABS NAVIGATION
-# ==========================================
-tab1, tab2, tab3, tab4 = st.tabs([
-    "🪪 Layer 1: APAAR & Edge-AI Face Gate",
-    "📟 Layer 2: USSD State & Hash Ledger",
-    "🕵️ Layer 3: Anti-Coercion Silent Trap",
-    "🚨 State Command & Unit Economics"
+st.divider()
+
+# TABS (Including Architecture Overview)
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "🪪 Layer 1: APAAR Identity Gate",
+    "📟 Layer 2: USSD State Vault",
+    "🕵️ Layer 3: Anti-Coercion Trap",
+    "🚨 State Vigilance & Economics",
+    "🧠 Architecture Overview"
 ])
 
-# ------------------------------------------
-# TAB 1: LAYER 1
-# ------------------------------------------
+# TAB 1
 with tab1:
     st.markdown("### Layer 1: Automated Age & Identity Gate (APAAR + DigiLocker API)")
-    st.caption("Eliminates paper birth certificates and proxy athletes using official government student data stores and offline-first Edge AI.")
+    st.markdown("Eliminates paper birth certificates and proxy athletes using official government student data repositories and offline-first Edge AI.")
     
-    col1, col2 = st.columns([1.1, 1], gap="medium")
+    c1, c2 = st.columns([1.1, 1], gap="medium")
 
-    with col1:
-        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
-        st.markdown("#### 📄 DPI Registry Query")
+    with c1:
+        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
+        st.markdown("#### 📄 DPI Student Registry Lookup")
         tournament_div = st.selectbox("Tournament Category", ["Under-17 (U-17) District Championship", "Under-19 (U-19) State Championship"])
         selected_apaar = st.selectbox("Select Athlete 12-Digit APAAR ID", list(APAAR_REGISTRY.keys()))
         student = APAAR_REGISTRY[selected_apaar]
@@ -312,8 +263,8 @@ with tab1:
         })
         st.markdown('</div>', unsafe_allow_html=True)
 
-    with col2:
-        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+    with c2:
+        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
         st.markdown("#### 👁️ On-Field PWA Face Recognition Gate")
         st.caption("Cross-matches live camera frame against cryptographically signed DigiLocker reference vector.")
         
@@ -339,16 +290,14 @@ with tab1:
                     add_block("TN-2026-884", f"IMPERSONATION_BLOCK:{selected_apaar}", "REJECTED", "FLAGGED")
         st.markdown('</div>', unsafe_allow_html=True)
 
-# ------------------------------------------
-# TAB 2: LAYER 2
-# ------------------------------------------
+# TAB 2
 with tab2:
     st.markdown("### Layer 2: Network-Resilient USSD Match Clock & State-Freezing Engine")
-    st.caption("Guarantees bulletproof uptime across rural sports grounds with zero internet dependence.")
+    st.markdown("Guarantees bulletproof uptime across rural sports grounds with zero internet dependence via 2G USSD handshakes.")
 
     c1, c2, c3 = st.columns(3, gap="medium")
     with c1:
-        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
         st.markdown("#### 🔗 Mutual Handshake")
         a1 = st.checkbox("Athlete A SIM Handshake", value=True)
         a2 = st.checkbox("Athlete B SIM Handshake", value=True)
@@ -362,7 +311,7 @@ with tab2:
         st.markdown('</div>', unsafe_allow_html=True)
 
     with c2:
-        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
         st.markdown("#### 🧊 State-Freezing Vault")
         score_input = st.text_input("Match Score State", value="24-19")
         reason = st.selectbox("Interruption Event", ["Heavy Rain / Court Wet", "Lighting Grid Failure", "Medical Timeout"])
@@ -372,7 +321,7 @@ with tab2:
         st.markdown('</div>', unsafe_allow_html=True)
 
     with c3:
-        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
         st.markdown("#### 📊 Ledger Metrics")
         st.metric("Total Blocks Mined", len(st.session_state.hash_chain))
         st.metric("Cryptography", "SHA-256 Chain")
@@ -381,9 +330,7 @@ with tab2:
     st.markdown("#### 📜 Live Cryptographic Match Audit Trail")
     st.dataframe(pd.DataFrame(st.session_state.hash_chain), use_container_width=True)
 
-# ------------------------------------------
-# TAB 3: LAYER 3
-# ------------------------------------------
+# TAB 3
 with tab3:
     st.markdown("### Layer 3: Dual-PIN Cryptographic Challenge & Silent Trap Protocol")
     st.markdown("""
@@ -395,9 +342,9 @@ with tab3:
     u1, u2 = st.columns([1, 1.2], gap="medium")
 
     with u1:
-        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
         st.markdown("#### 📱 Athlete Feature Phone (USSD Simulator)")
-        st.markdown(f'<div class="ussd-terminal">{st.session_state.ussd_screen_text}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="ussd-console">{st.session_state.ussd_screen_text}</div>', unsafe_allow_html=True)
         
         entered_val = st.number_input("Keypad Input (Enter 58 for Normal, 125 for Duress):", min_value=0, max_value=999, value=125)
         
@@ -432,28 +379,22 @@ with tab3:
         st.markdown('</div>', unsafe_allow_html=True)
 
     with u2:
-        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
         st.markdown("#### 🧠 Strategic Advantage for Evaluators")
         if st.session_state.bracket_frozen:
-            st.markdown("""
-            <div class="duress-alert-box">
-                🚨 SILENT TRAP SUCCESSFUL!<br><br>
-                • <b>Attacker View (Left Screen):</b> Shows a fake success message ("Data recorded successfully"). The aggressor suspects nothing, keeping the young athlete 100% safe from physical harm.<br><br>
-                • <b>Backend Cloud View:</b> Instantly decoded the Duress PIN (88), locked the tournament bracket, and beamed a priority alert to state sports vigilance!
-            </div>
-            """, unsafe_allow_html=True)
+            st.error("""
+            🚨 **SILENT TRAP SUCCESSFUL!**
+            * **Attacker View (Left Screen):** Shows a fake success message ("Data recorded successfully"). The aggressor suspects nothing, keeping the young athlete 100% safe from physical harm.
+            * **Backend Cloud View:** Instantly decoded the Duress PIN (88), locked the tournament bracket, and beamed a priority alert to state sports vigilance!
+            """)
         else:
-            st.markdown("""
-            <div class="safe-status-box">
-                🟢 SYSTEM ARMED & READY<br><br>
-                Type <b>125</b> on the keypad and click Transmit to experience how Khel-Verify AI protects grassroots athletes against local corruption without putting them in danger.
-            </div>
-            """, unsafe_allow_html=True)
+            st.success("""
+            🟢 **SYSTEM ARMED & READY**
+            Type **125** on the keypad and click Transmit to experience how Khel-Verify AI protects grassroots athletes against local corruption without putting them in danger.
+            """)
         st.markdown('</div>', unsafe_allow_html=True)
 
-# ------------------------------------------
-# TAB 4: STATE COMMAND & ECONOMICS
-# ------------------------------------------
+# TAB 4
 with tab4:
     st.markdown("### 🚨 State Vigilance Command & Unit Economics")
     
@@ -491,3 +432,30 @@ with tab4:
         ]
     })
     st.table(comparison_df)
+
+# TAB 5: ARCHITECTURE OVERVIEW
+with tab5:
+    st.markdown("### 🧠 Comprehensive Architecture Overview & Technology Stack")
+    
+    col_a1, col_a2 = st.columns(2, gap="medium")
+    with col_a1:
+        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
+        st.markdown("#### 🛠️ Technology Stack & Background Solution")
+        st.markdown("""
+        - **Problem Background:** Grassroots sports suffer from age fraud, certificate tampering, and on-field coercion of vulnerable athletes by local officials.
+        - **Zero-Hardware Backend:** Bypasses expensive ₹15,000+ biometric scanners using existing national cloud & telecom infrastructures.
+        - **DPI Data Pipeline:** Integrates 12-digit APAAR ID and DigiLocker XML APIs for tamper-proof birth records.
+        - **Edge Vision:** MobileNetV2 128-D vector matching for offline biometric face verification.
+        - **Telecom Integration:** USSD session gateways enabling basic 2G feature phone authentication.
+        """)
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+    with col_a2:
+        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
+        st.markdown("#### 🔒 Cryptographic & Security Architecture")
+        st.markdown("""
+        - **SHA-256 Hash-Chain Ledger:** Every match start, score state, and interruption is immutably chained to prevent local tampering during breaks.
+        - **Dual-PIN Cryptographic Algebra:** Layer 3 separates True PIN ($T$) from Duress PIN ($D$), triggering silent state vigilance alerts while displaying decoy success messages on feature phones.
+        - **Team Roster:** Developed by Team KCG Innovators (Thatchayaini, Ragul, Natarajan, Monish, Yuvan) from KCG College of Technology.
+        """)
+        st.markdown('</div>', unsafe_allow_html=True)
