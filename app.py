@@ -233,25 +233,45 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 with st.sidebar:
-    st.markdown("### 🏆 Team KCG Innovators")
-    st.caption("Department of CSE (Cyber Security), Auto & Mech")
-    st.markdown("""
-    - **Thatchayaini** *(Lead - Cyber Security)*
-    - **Ragul** *(Automobile Engg)*
-    - **Natarajan** *(Mechanical Engg)*
-    - **Monish** *(Mechanical Engg)*
-    - **Yuvan** *(Mechanical Engg)*
-    """)
+    st.markdown("### 🛡️ Khel-Verify AI Command")
+    st.caption("National DPI Sports Integrity Architecture")
+    
     st.divider()
-    st.markdown("### ⚙️ Live System Telemetry")
-    st.metric("Hardware Footprint", "₹0 / Ground", delta="-₹15,000 vs Biometric Scanners")
+    
+    st.markdown("### 🧠 Solution & Backend Core")
+    st.markdown("""
+    - **Zero-Hardware Backend:** Bypasses ₹15k+ biometric scanners using existing cloud & telecom infrastructure.
+    - **DPI Data Pipeline:** Integrates 12-digit APAAR ID & DigiLocker APIs for tamper-proof birth records.
+    - **Edge-AI Face Recognition:** MobileNetV2 128-D vector matching prevents proxy/over-age players.
+    - **SHA-256 Hash Chain:** Cryptographic vault freezes match scores against local ground tampering.
+    """)
+    
+    st.divider()
+    
+    st.markdown("### ⚙️ What We Did in Each Layer")
+    st.markdown("""
+    - **🪪 Layer 1 (Identity Gate):** 
+      * *What we did:* We fetched official student records using the 12-digit APAAR ID and DigiLocker XML API.
+      * *Why:* Stops over-age/proxy players before they enter the ground using offline-first Edge AI face matching.
+    - **📟 Layer 2 (USSD Vault):** 
+      * *What we did:* Built a 2G feature phone USSD/SMS handshake engine with an immutable SHA-256 audit ledger.
+      * *Why:* Ensures zero-internet reliability in remote villages and locks score states against local manipulation.
+    - **🕵️ Layer 3 (Silent Trap):** 
+      * *What we did:* Designed a Dual-PIN cryptographic algebra where entering a Duress PIN triggers a decoy phone screen.
+      * *Why:* Protects young athletes physically from corrupt officials while silently freezing the bracket and alerting state vigilance!
+    """)
+    
+    st.divider()
+    
+    st.markdown("### 📊 Live Impact Metrics")
+    st.metric("Hardware Footprint", "₹0 / Ground", delta="-₹15,000 vs Biometric Terminals")
     st.metric("Per-Match Cost", "₹2.40", delta="USSD Cloud Gateway")
     
     status_label = "🚨 BRACKET FROZEN (DURESS)" if st.session_state.bracket_frozen else "🟢 SECURE & LIVE"
-    st.markdown(f"**Integrity Status:**<br>`{status_label}`", unsafe_allow_html=True)
+    st.markdown(f"**System Status:**<br>`{status_label}`", unsafe_allow_html=True)
     
     st.divider()
-    if st.button("🔄 Reset System Demonstration", use_container_width=True):
+    if st.button("🔄 Reset System State", use_container_width=True):
         st.session_state.bracket_frozen = False
         st.session_state.vigilance_alerts = []
         st.rerun()
